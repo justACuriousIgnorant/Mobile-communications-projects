@@ -5,3 +5,6 @@
 - HSPA (supporta frequenze da 850MHz a 2,6 GHz, quelle usate più di frequente stanno attorno ai 2/2,1 GHz)
 - Wimax (parte dai 2GHz)
 - IEEE 802.20 (opera su frequenze < 3.5 GHz)
+- PCS
+- Forse EDGE
+- Forse HiperMAN (2-11 GHz)
