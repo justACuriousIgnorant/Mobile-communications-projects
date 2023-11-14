@@ -1,13 +1,23 @@
-- 4G
-- LTE
+- 4G (LTE):
+	- Frequenze di operazione: 450 MHz fino a 3.8 GHz
+	- Dimensione celle: in aree urbane < 1 km, aree rurali da 5 km fino a 100 km
+- 5G medium band:
+	- Frequenze: 1.7 GHz fino a 4.7 GHz
+	- Dim. celle: le microcelle coprono 0.5 km - 2.5 km, usate indoor o in aree urbane delimitate
 - Cose che usano la banda L
-- UMTS
-- HSPA (supporta frequenze da 850MHz a 2,6 GHz, quelle usate più di frequente stanno attorno ai 2/2,1 GHz)
-- Wimax (parte dai 2GHz)
-- IEEE 802.20 (opera su frequenze < 3.5 GHz)
-- PCS
-- Forse EDGE
-- Forse HiperMAN (2-11 GHz)
-
-
-proviamo
+- UMTS/3G:
+	- Frequenze: 850 MHz fino a 2.5 GHz, frequenze primarie attorno ai 2 GHz
+	- Dim. celle: le macrocelle solitamente vanno da 1 km a 5 km
+- HSPA:
+	- Supporta frequenze da 850MHz a 2,6 GHz, quelle usate più di frequente stanno attorno ai 2/2,1 GHz. In generale, HSPA è un'evoluzione di UMTS, quindi probabilmente possiamo applicare gli stessi parametri
+- Wimax (parte dai 2GHz):
+	- Frequenze: 2/2.3 GHz fino a 60 GHz
+	- Dim. celle: qualche chilometro (max 50/100, media non specificata)
+- PCS:
+	- Frequenze: 1.8 GHz in Europa (UK), 1.9 GHz negli USA
+	- Dim. celle non specificata (PCS è solo un insieme di frequenze destinate all'uso per cellulari)
+	- Sembra un termine generico per indicare reti cellulari digitali, a differenza delle vecchie reti cellulari analogiche
+- HiperMAN:
+	- Frequenze: 2-11 GHz, banda principale 3.5 GHz
+	- Dim. celle: 2 km - 10 km
+	- Alternativa europea a Wimax
