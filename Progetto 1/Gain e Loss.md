@@ -11,5 +11,5 @@ Infatti se $p_r < p_{min}$ la loss aumenta rispetto a $L_{max}$ (abbiamo una pot
 **QUINDI:** noi vogliamo che la nostra $L$ calcolata con il modello COST213 sia sempre inferiore a $L_{max}$:
 $$L \le L_{max}$$
 Il modello non tiene conto dello shadowing, quindi la probabilità di stabilire un link è **la probabilità che $L+X \gt L_{max}$**:
-$$P[link] = P[L+X > L_{max}] = P[X>L_{max}-L]$$
+$$P[link] = P[L+X < L_{max}] = P[X < L_{max}-L]$$
 Questo dipende dalla distanza $d$ e dalla distribuzione $\sigma$ di $X$.
