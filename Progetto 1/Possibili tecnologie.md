@@ -45,3 +45,6 @@
 Potremmo prendere come massima potenza di trasmissione 40 dBm (come assunzione, basta specificarlo).
 - TS 38.104 specifica che per trasmissioni di medio raggio la potenza per base station di tipo 1C e 1H (che non so cosa siano) deve essere $\le$ 38 dBm
 Direi che potremmo scegliere 38 o 40.
+
+**Sensibilità del dispositivo (potenza minima di ricezione):** forse cambia in base alla larghezza di banda
+- Secondo [questo](https://www.etsi.org/deliver/etsi_ts/138100_138199/13810101/15.02.00_60/ts_13810101v150200p.pdf) per le frequenze che ci interessano va da circa -100 dBm a circa -90 dBm
