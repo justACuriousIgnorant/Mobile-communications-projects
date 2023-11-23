@@ -21,3 +21,30 @@
 	- Frequenze: 2-11 GHz, banda principale 3.5 GHz
 	- Dim. celle: 2 km - 10 km
 	- Alternativa europea a Wimax
+
+
+## 5G
+
+**Frequenze:** [Wikipedia](https://it.wikipedia.org/wiki/Bande_di_frequenze_5G_NR) dice che il 5G NR (livello fisico del 5G) usa (tra le altre) le bande n1, n2, n3, che coprono le frequenze da 1.7 GHz a 2.1 GHz; inoltre sono presenti anche bande che arrivano a 1.5 GHz. Altri link che dovrebbero contenere la stessa informazione:
+- [TS 38.104](https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3202)
+- [TS 38.101-1](https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3283)
+- [TS 38.101-2](https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3284)
+- [TS 38.101-3](https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3285)
+- [TS 38.101-4](https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3366)
+- [TS 38.101-5](https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3982)
+
+**Potenza di trasmissione:** consideriamo trasmissioni in microcelle (che coprono circa 2km max).
+
+| Sito                 |  Potenza di trasmissione    |       Note      |
+|----------------------|-----------------------------|-----------------|
+| [Sito 1](https://www.essentracomponents.com/en-us/news/industries/telecoms-data/a-guide-to-5g-small-cells-and-macrocells)             |          33-37 dBm          |                 |
+| [Sito 2](https://www.ti.com/lit/wp/slyy166/slyy166.pdf?ts=1700663338553&ref_url=https%253A%252F%252Fwww.ti.com%252Fabout-ti%252Ftrade-shows-conferences%252Fembedded-world.html)             |          30-40 dBm          |                 |
+| [Wikipedia](https://en.wikipedia.org/wiki/5G)          |          37-40 dBm          |                 |
+| [Sito 4](https://dgtlinfra.com/small-cells-microcell-picocell-femtocell/)             |          33-43 dBm          |  (riferito LTE) |
+
+Potremmo prendere come massima potenza di trasmissione 40 dBm (come assunzione, basta specificarlo).
+- TS 38.104 specifica che per trasmissioni di medio raggio la potenza per base station di tipo 1C e 1H (che non so cosa siano) deve essere $\le$ 38 dBm
+Direi che potremmo scegliere 38 o 40.
+
+**Sensibilità del dispositivo (potenza minima di ricezione):** forse cambia in base alla larghezza di banda
+- Secondo [questo](https://www.etsi.org/deliver/etsi_ts/138100_138199/13810101/15.02.00_60/ts_13810101v150200p.pdf) per le frequenze che ci interessano va da circa -100 dBm a circa -90 dBm
