@@ -28,22 +28,20 @@
             }
           },
           {
-            "id": "95d5f56703463f21",
+            "id": "70ff46e034c45ef2",
             "type": "leaf",
             "state": {
-              "type": "pdf",
-              "state": {
-                "file": "mws-project-path-loss-shadowing.pdf"
-              }
+              "type": "empty",
+              "state": {}
             }
           },
           {
-            "id": "88a6f232364d2d04",
+            "id": "95d5f56703463f21",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "conflict-files-obsidian-git.md",
+                "file": "Possibili tecnologie.md",
                 "mode": "source",
                 "source": false
               }
@@ -53,16 +51,14 @@
             "id": "ace54cfa8ba2c5ef",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "pdf",
               "state": {
-                "file": "Gain e Loss.md",
-                "mode": "source",
-                "source": false
+                "file": "mws-project-path-loss-shadowing.pdf"
               }
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -128,7 +124,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "conflict-files-obsidian-git.md",
+                "file": "mws-project-path-loss-shadowing.pdf",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -145,7 +141,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "conflict-files-obsidian-git.md",
+                "file": "mws-project-path-loss-shadowing.pdf",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -168,7 +164,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "conflict-files-obsidian-git.md"
+                "file": "mws-project-path-loss-shadowing.pdf"
               }
             }
           }
@@ -189,12 +185,32 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "88a6f232364d2d04",
+  "active": "ace54cfa8ba2c5ef",
   "lastOpenFiles": [
-    "mws-project-path-loss-shadowing.pdf",
-    "conflict-files-obsidian-git.md",
-    "Gain e Loss.md",
+    "exercise 1/venv/lib/python3.11/site-packages/matplotlib/tests/__pycache__/test_widgets.cpython-311.pyc",
+    "exercise 1/venv/lib/python3.11/site-packages/matplotlib/tests/__pycache__/test_usetex.cpython-311.pyc",
+    "exercise 1/venv/lib/python3.11/site-packages/matplotlib/tests/__pycache__/test_units.cpython-311.pyc",
+    "exercise 1/venv/lib/python3.11/site-packages/matplotlib/tests/__pycache__/test_type1font.cpython-311.pyc",
+    "exercise 1/venv/lib/python3.11/site-packages/matplotlib/tests/__pycache__/test_ttconv.cpython-311.pyc",
+    "exercise 1/venv/lib/python3.11/site-packages/matplotlib/tests/__pycache__/test_triangulation.cpython-311.pyc",
+    "exercise 1/venv/lib/python3.11/site-packages/matplotlib/tests/__pycache__/test_transforms.cpython-311.pyc",
+    "exercise 1/venv/lib/python3.11/site-packages/matplotlib/tests/__pycache__/test_tightlayout.cpython-311.pyc",
+    "exercise 1/venv/lib/python3.11/site-packages/matplotlib/tests/__pycache__/test_ticker.cpython-311.pyc",
+    "exercise 1/venv/lib/python3.11/site-packages/matplotlib/tests/__pycache__/test_textpath.cpython-311.pyc",
+    "exercise 1/venv/lib/python3.11/site-packages/matplotlib/tests/__pycache__/test_text.cpython-311.pyc",
+    "exercise 1/venv/lib/python3.11/site-packages/matplotlib/mpl-data/sample_data/logo2.png",
+    "exercise 1/venv/lib/python3.11/site-packages/matplotlib/mpl-data/sample_data/grace_hopper.jpg",
+    "exercise 1/venv/lib/python3.11/site-packages/matplotlib/mpl-data/sample_data/Minduka_Present_Blue_Pack.png",
+    "exercise 1/venv/lib/python3.11/site-packages/matplotlib/mpl-data/images/zoom_to_rect_large.png",
+    "exercise 1/venv/lib/python3.11/site-packages/matplotlib/mpl-data/images/zoom_to_rect.svg",
+    "exercise 1/venv/lib/python3.11/site-packages/matplotlib/mpl-data/images/zoom_to_rect.png",
+    "exercise 1/venv/lib/python3.11/site-packages/matplotlib/mpl-data/images/zoom_to_rect-symbolic.svg",
+    "exercise 1/venv/lib/python3.11/site-packages/matplotlib/mpl-data/images/subplots_large.png",
+    "exercise 1/venv/lib/python3.11/site-packages/matplotlib/mpl-data/images/subplots.svg",
+    "exercise 1/venv/lib/python3.11/site-packages/matplotlib/mpl-data/images/subplots.png",
     "COST213-Hata model.md",
-    "Possibili tecnologie.md"
+    "Possibili tecnologie.md",
+    "Gain e Loss.md",
+    "conflict-files-obsidian-git.md"
   ]
 }
