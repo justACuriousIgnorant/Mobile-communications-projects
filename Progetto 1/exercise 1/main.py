@@ -59,12 +59,15 @@ if __name__ == '__main__':
     probs = calculate_all_prob(couples)
 
     plotter_prob = PlotterClass.PlotterClass(probs)
-    plotter_prob.plot_distance()
-    plotter_prob.plot_sigma()
+    #plotter_prob.plot_distance()
+    #plotter_prob.plot_sigma()
 
     losses = calculate_all_loss(couples)
     plotter_loss = PlotterClass.PlotterClass(losses)
-    plotter_loss.plot_loss_sigma()
-    plotter_loss.plot_loss_distance()
+    #plotter_loss.plot_loss_sigma()
+    #plotter_loss.plot_loss_distance()
 
+    #plotter_prob.plot3D_prob()
+    #plotter_loss.plot3D_loss()
 
+    plotter_prob.bar_plot_prob()

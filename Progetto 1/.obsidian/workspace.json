@@ -185,8 +185,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "7a423320e1878707",
+  "active": "ace54cfa8ba2c5ef",
   "lastOpenFiles": [
+    "exercise 1/PlotterClass.py~",
+    "exercise 1/__pycache__/PlotterClass.cpython-311.pyc.140128686106464",
+    "exercise 1/__pycache__/PlotterClass.cpython-311.pyc.139897033615200",
+    "exercise 1/main.py~",
+    "exercise 1/__pycache__/PlotterClass.cpython-311.pyc.139869314541408",
     "exercise 1/__pycache__/PlotterClass.cpython-311.pyc.140044749678432",
     "exercise 1/__pycache__/Model.cpython-311.pyc.140044968364848",
     "exercise 1/Model.py~",
@@ -196,11 +201,6 @@
     "exercise 1/venv/share/jupyter/kernels/python3/logo-svg.svg",
     "exercise 1/venv/share/jupyter/kernels/python3/logo-64x64.png",
     "exercise 1/venv/share/jupyter/kernels/python3/logo-32x32.png",
-    "exercise 1/venv/share/jupyter/kernels/python3/kernel.json",
-    "exercise 1/venv/share/man/man1/ttx.1",
-    "exercise 1/venv/share/man/man1/ipython.1",
-    "exercise 1/venv/share/jupyter/kernels/python3",
-    "exercise 1/venv/share/man/man1",
     "exercise 1/venv/lib/python3.11/site-packages/numpy/random/LICENSE.md",
     "exercise 1/venv/lib/python3.11/site-packages/PyQt5/Qt5/qml/QtQuick/Controls/Styles/Base/images/tab_selected.png",
     "exercise 1/venv/lib/python3.11/site-packages/PyQt5/Qt5/qml/QtQuick/Controls/Styles/Base/images/tab.png",
