@@ -6,7 +6,7 @@ from matplotlib.widgets import Slider, Button
 import PlotterClass
 hr = 3 #meters
 ht = 40 #meters
-f = 2 #GHz
+f = 1700 #MHz
 d = 10 #km
 pr = -90 #dBm
 pt = 40 #dBm
@@ -20,8 +20,9 @@ def truncate(number, digits) -> float:
     return math.trunc(stepper * number) / stepper
 
 def calculate_prob(L, sigma):
+
     Lmax = pt / pr
-    #print(L, Lmax)
+    print("L:", L, ", Lmax: ", Lmax)
     prob = 0.5 * (1 + math.erf((Lmax - L) / (math.sqrt(2) * sigma)))
     #print(prob)
     return prob
@@ -58,11 +59,12 @@ if __name__ == '__main__':
     probs = calculate_all_prob(couples)
 
     plotter_prob = PlotterClass.PlotterClass(probs)
-    #plotter_prob.plot_distance()
-
+    plotter_prob.plot_distance()
+    plotter_prob.plot_sigma()
 
     losses = calculate_all_loss(couples)
     plotter_loss = PlotterClass.PlotterClass(losses)
     plotter_loss.plot_loss_sigma()
-    #plotter_loss.plot_loss_distance()
+    plotter_loss.plot_loss_distance()
+
 
