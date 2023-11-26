@@ -1,12 +1,14 @@
 from math import *
 class COST231Model:
-    # f expressed in GHz
-    # d expressed in km
-    # ht and hr expressed in meters
+    # f is expressed in GHz
+    # d is expressed in km
+    # ht and hr are expressed in meters
     def __init__(self, hr=0, ht=0):
         self.hr = hr
         self.ht = ht
 
+    # lossdB calculates the loss using the formula of COST231.
+    # the output should be in dBm
     def lossdB(self, f,d):
         f = f * 10 ** 6
         d = d * 10 ** 3

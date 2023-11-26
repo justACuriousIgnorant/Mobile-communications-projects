@@ -105,7 +105,7 @@ class PlotterClass:
         # Create a subplot
         fig, ax = plt.subplots()
         plt.subplots_adjust(bottom=0.35)
-        plt.xlim((0, 10))
+        plt.xlim((1, 10))
         sv = 0.1  # define the starting value of sigma
         #I select sigma and
         x = [x[0] for x in self.probs if x[1] == sv]
@@ -173,13 +173,14 @@ class PlotterClass:
 
     def bar_plot_prob(self):
         fig, ax = plt.subplots()
+        plt.subplots_adjust(left=0.25, bottom=0.25)
         sv = 0.01
         sd = 5.0
         values = [x[2] for x in self.probs if (x[0] == sd and x[1] == sv)]
-        ax.bar(['probability'], values, label='Probability', color='red')
+        bar = ax.bar(['probability'], values, label='Probability', color='red')
         ax.set_ylabel('Probability')
         ax.set_title('Probability of link')
-
+        plt.ylim((0, 1))
         sigma = plt.axes([0.25, 0.01, 0.65, 0.03])
         sigma_slider = Slider(sigma, 'Sigma', -1, 1, valinit=0.1, valstep=0.01)
         distance = plt.axes([0.25, 0.05, 0.65, 0.03])
@@ -190,9 +191,10 @@ class PlotterClass:
             distance_bound = self.__truncate(distance_slider.val, 1)
             # probabilità con varianza fissa e distanza variabile
             values = [x[2] for x in self.probs if (x[0] == distance_bound and x[1] == sigma_bound)]
-            fig = plt.subplots()
-            plt.xlim(0, 1)
-            ax.bar(['probability'], values, label='Probability', color='red')
+            bar[0].set_height(values[0])
+            ax.set_ylabel('Probability')
+            ax.set_xlabel(str(values[0]*100)+"%")
+            ax.set_title('Probability of link')
             print(values)
 
         # Call update function when slider value is changed
