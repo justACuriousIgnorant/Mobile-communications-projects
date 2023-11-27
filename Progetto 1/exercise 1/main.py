@@ -7,7 +7,7 @@ import PlotterClass
 hr = 3      #meters
 ht = 40     #meters
 pr = -96    #dBm
-pt = 40     #dBm
+pt = 56     #dBm
 
 # truncate(number,digits) is a simple function to truncate the numbers when they exceed the number of digits indicated,
 # none cares about it
@@ -34,11 +34,12 @@ def calculate_prob(L, sigma):
 # - a triple representing [min_val, max_val, step] for distance
 # - a triple representing [min_val, max_val, step] for sigma
 # the output is a tuple of couples like [(dist1, sig1), (dist1, sig2), ..., (dist2,sig1),(dist2,sig2),...]
-def calculate_couples(dist, sig):
+def calculate_couples(dist, sig, freq):
     distances = [truncate(x,1) for x in np.arange(dist[0], dist[1], dist[2])]
     sigmas = [truncate(x,2) for x in np.arange(sig[0], sig[1], sig[2])]
+
     #I remove y=0 because when sigma=0 the formula to calculate the probability is not valid
-    couples = [(x, y) for x in distances for y in sigmas if y!=0]
+    couples = [(x, y, z) for x in distances for y in sigmas for z in freq if y!=0 ]
     return couples
 
 # calculate_all_prob(couples) calculate the probabilities for each of the couple of the input
@@ -48,10 +49,13 @@ def calculate_couples(dist, sig):
 def calculate_all_prob(couples):
     probs = []
     losses = []
+    #couple[0] = distanza
+    #couple[1] = sigma
+    #couple[2] = frequence
     for couple in couples:
-        L = model.lossdB(f, couple[0])
-        probs.append([couple[0],couple[1],calculate_prob(L, couple[1])])
-        losses.append([couple[0], couple[1], L])
+        L = model.lossdB(couple[2], couple[0])
+        probs.append([couple[0],couple[1],calculate_prob(L, couple[1]), couple[2]])
+        losses.append([couple[0], couple[1], L, couple[2]])
     return probs,losses
 
 
@@ -61,9 +65,9 @@ if __name__ == '__main__':
 
     distance_range = [1,10.1,0.1]
     sigmas_range = [0,12.01,0.01]
-
+    frequences = [1700,1800,1900,2000]
     #I calculate all the possible couples (dist,sigma)
-    couples = calculate_couples(distance_range, sigmas_range)
+    couples = calculate_couples(distance_range, sigmas_range,frequences)
     #I calculate all the possible probabilities and losses for each couple
     probs, losses = calculate_all_prob(couples)
 
@@ -74,8 +78,8 @@ if __name__ == '__main__':
 
     #plotter_prob.plot_distance()
     #plotter_prob.plot_sigma()
-    #plotter_loss.plot_loss_sigma()
+    plotter_loss.plot_loss_sigma()
     #plotter_loss.plot_loss_distance()
     #plotter_prob.plot3D_prob()
     #plotter_loss.plot3D_loss()
-    plotter_prob.bar_plot_prob()
+    #plotter_prob.bar_plot_prob()
