@@ -2,6 +2,7 @@ import math
 import matplotlib.pyplot as plt
 from matplotlib.widgets import Slider, Button
 from pylab import cm
+import numpy as np
 
 class PlotterClass:
 
@@ -173,11 +174,17 @@ class PlotterClass:
 
         # For each set of style and range settings, plot n random points in the box
         # defined by x in [23, 32], y in [0, 100], z in [zlow, zhigh].
-        for m, zlow, zhigh in [('o', -50, -25), ('^', -30, -5)]:
+        for m, zlow, zhigh in [('o', -50, -25)]:#, ('^', -30, -5)]:
             xs = [x[0] for x in self.probs]
             ys = [x[1] for x in self.probs]
             zs = [x[2] for x in self.probs]
             ax.scatter(xs, ys, zs, marker=m)
+
+            colmap = cm.ScalarMappable(cmap=cm.hsv)
+            colmap.set_array(zs)
+
+            ax.scatter(xs, ys, zs, c=cm.hsv(np.array(zs)/max(zs)), marker=m)
+        plt.colorbar(colmap)
 
         ax.set_xlabel('Distance (km)')
         ax.set_ylabel('Sigma')
@@ -200,7 +207,7 @@ class PlotterClass:
             colmap = cm.ScalarMappable(cmap=cm.hsv)
             colmap.set_array(zs)
 
-            ax.scatter(xs, ys, zs, c=zs, marker=m)
+            ax.scatter(xs, ys, zs, c=cm.hsv(np.array(zs)/max(zs)), marker=m)
         plt.colorbar(colmap)
 
         ax.set_xlabel('Distance (km)')
