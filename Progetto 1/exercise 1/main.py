@@ -6,9 +6,7 @@ import PlotterClass
 #parameters
 hr = 3      #meters
 ht = 40     #meters
-f = 1700    #MHz
-d = 10      #km
-pr = -90    #dBm
+pr = -96    #dBm
 pt = 40     #dBm
 
 # truncate(number,digits) is a simple function to truncate the numbers when they exceed the number of digits indicated,
@@ -24,10 +22,10 @@ def truncate(number, digits) -> float:
 # calculate_prob(L,sigma) that calculates and return the final probability,
 # having the Loss of the Model and the value of sigma
 def calculate_prob(L, sigma):
-    Lmax = pt / pr
+    Lmax = pt-pr #dB
     print("L:", L, ", Lmax: ", Lmax)
-
-    prob = 0.5 * (1 + math.erf((Lmax - L) / (math.sqrt(2) * sigma))) #undefined situation when sigma=0
+    argument = (Lmax - L) / (math.sqrt(2) * sigma)
+    prob = 0.5 * (1 + math.erf(argument)) #undefined situation when sigma=0
     return prob
 
 # calculate_couples(dist,sig) calculates the cartesian product between the possible distances
@@ -62,7 +60,7 @@ if __name__ == '__main__':
     model = Model.COST231Model(hr = hr, ht = ht)
 
     distance_range = [1,10.1,0.1]
-    sigmas_range = [-1,1.01,0.01]
+    sigmas_range = [0,12.01,0.01]
 
     #I calculate all the possible couples (dist,sigma)
     couples = calculate_couples(distance_range, sigmas_range)
