@@ -1,6 +1,7 @@
 import math
 import matplotlib.pyplot as plt
 from matplotlib.widgets import Slider, Button
+from pylab import cm
 
 class PlotterClass:
 
@@ -26,7 +27,11 @@ class PlotterClass:
         l, = plt.plot(x, y)
 
         sigma = plt.axes([0.25, 0.2, 0.65, 0.03])
+<<<<<<< HEAD
         sigma_slider = Slider(sigma, 'Sigma', 0, 12.01, sv, 0.01)
+=======
+        sigma_slider = Slider(sigma, 'Sigma', 0, 12, sv, 0.01)
+>>>>>>> origin/master
 
         def update(val):
             bound = self.__truncate(sigma_slider.val, 2)
@@ -54,7 +59,11 @@ class PlotterClass:
         l, = plt.plot(x, y)
 
         distance = plt.axes([0.25, 0.2, 0.65, 0.03])
+<<<<<<< HEAD
         distance_slider = Slider(distance, 'Distance (km)', 0, 10.1, sd, 0.1)
+=======
+        sigma_slider = Slider(distance, 'Distance (km)', 0, 12, sd, 0.1)
+>>>>>>> origin/master
 
         def update(val):
             bound = self.__truncate(distance_slider.val, 1)
@@ -113,7 +122,11 @@ class PlotterClass:
         l, = plt.plot(x, y, )
 
         sigma = plt.axes([0.25, 0.2, 0.65, 0.03])
+<<<<<<< HEAD
         sigma_slider = Slider(sigma, 'Sigma:', 0, 12.01,  valinit=0.1, valstep=0.01)
+=======
+        sigma_slider = Slider(sigma, 'Sigma', 0, 12,  valinit=0.1, valstep=0.01)
+>>>>>>> origin/master
 
         def update(val):
             bound = self.__truncate(sigma_slider.val, 2)
@@ -154,7 +167,7 @@ class PlotterClass:
     def plot3D_loss(self):
 
         fig = plt.figure()
-        ax = fig.add_subplot(projection='3d')
+        ax = fig.add_subplot(111,projection='3d')
 
         # For each set of style and range settings, plot n random points in the box
         # defined by x in [23, 32], y in [0, 100], z in [zlow, zhigh].
@@ -162,7 +175,12 @@ class PlotterClass:
             xs = [x[0] for x in self.probs]
             ys = [x[1] for x in self.probs]
             zs = [x[2] for x in self.probs]
-            ax.scatter(xs, ys, zs, marker=m)
+
+            colmap = cm.ScalarMappable(cmap=cm.hsv)
+            colmap.set_array(zs)
+
+            ax.scatter(xs, ys, zs, c=zs, marker=m)
+        plt.colorbar(colmap)
 
         ax.set_xlabel('Distance (km)')
         ax.set_ylabel('Sigma')
@@ -182,7 +200,11 @@ class PlotterClass:
         ax.set_title('Probability of link')
         plt.ylim((0, 1))
         sigma = plt.axes([0.25, 0.01, 0.65, 0.03])
+<<<<<<< HEAD
         sigma_slider = Slider(sigma, 'Sigma', 0, 12.01, valinit=0.1, valstep=0.01)
+=======
+        sigma_slider = Slider(sigma, 'Sigma', 0, 12, valinit=0.1, valstep=0.01)
+>>>>>>> origin/master
         distance = plt.axes([0.25, 0.05, 0.65, 0.03])
         distance_slider = Slider(distance, 'Distance', 1, 10.1, valinit=5, valstep=0.1)
         bar[0].set_height(values[0])
