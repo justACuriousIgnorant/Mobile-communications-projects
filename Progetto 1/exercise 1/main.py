@@ -41,11 +41,14 @@ if __name__ == '__main__':
 
 
     ##Simulation approach
-    results = simulator.generate_samples(5, 1700, 100)
-    plotter_prob.plot_compare(results, 100)
+    results=[]
+    results.append(simulator.generate_samples(5, 1700, 100))
+    results.append(simulator.generate_samples(5, 1700, 1000))
+    results.append(simulator.generate_samples(5, 1700, 10000))
+    plotter_prob.plot_compare(results, [100,1000,10000])
 
-    results = simulator.generate_samples(5, 1700, 1000)
-    plotter_prob.plot_compare(results, 1000)
+    #results = simulator.generate_samples(5, 1700, 1000)
+    #plotter_prob.plot_compare(results, 1000)
 
-    results = simulator.generate_samples(5, 1700, 10000)
-    plotter_prob.plot_compare(results, 10000)
+    #results = simulator.generate_samples(5, 1700, 10000)
+    #plotter_prob.plot_compare(results, 10000)

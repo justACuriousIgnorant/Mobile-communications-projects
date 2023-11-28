@@ -300,36 +300,37 @@ class PlotterClass:
         probs = [(x[0],x[2]) for x in self.probs if (x[1] == sigma) and (x[3] == f)]
         return probs
 
-    def plot_compare(self, simulation_data, n):
+    def plot_compare(self, simulation_data, n_list):
         # simulation_data[0] distance
         # simulation_data[1] prob
         # simulation_data[2] freq
         # simulation_data[3] sigma
 
-
-
-        f = simulation_data[0][2]
-        sigma = simulation_data[0][3]
         # Create a subplot
-        fig, ax = plt.subplots()
+        fig, ax = plt.subplots(len(n_list))
         plt.subplots_adjust(bottom=0.35)
         plt.xlim((0, 12))
         #plt.ylim((0,1))
         colors = ["#4D1A1A", "#B03C3C", "#D94A4A", "#C68B8A", "#FFC2B5"]
-        plots_data = self.gen_data_comparison(f,sigma)
 
-        print(simulation_data)
-        x1 = [x[0] for x in plots_data]
-        y1 = [y[1] for y in plots_data]
+        for i in range(0,len(n_list)):    
 
-        x2 = [x[0] for x in simulation_data]
-        y2 = [y[1] for y in simulation_data]
+            f = simulation_data[i][0][2]
+            sigma = simulation_data[i][0][3]
+            plots_data = self.gen_data_comparison(f,sigma)
+
+            print(simulation_data[i])
+            x1 = [x[0] for x in plots_data]
+            y1 = [y[1] for y in plots_data]
+
+            x2 = [x[0] for x in simulation_data[i]]
+            y2 = [y[1] for y in simulation_data[i]]
 
 
-        ax.plot(x1,y1, label="theoretical", color=colors[0], lw=self.lw)
-        ax.plot(x2,y2, label=f"simulated (n={n})", color=colors[2], lw=self.lw)
+            ax[i].plot(x1,y1, label="theoretical", color=colors[0], lw=self.lw)
+            ax[i].plot(x2,y2, label=f"simulated (n={n_list[i]})", color=colors[2], lw=self.lw)
 
-        ax.legend()
+            ax[i].legend()
         plt.xlabel("Distance km")
         plt.ylabel("Probability")
         plt.title("Probability(distance)")
