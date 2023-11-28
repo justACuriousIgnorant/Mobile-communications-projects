@@ -20,7 +20,7 @@ class Simulator:
     # calculate_prob(L,sigma) that calculates and return the final probability,
     # having the Loss of the Model and the value of sigma
     def calculate_prob(self, L, sigma):
-        Lmax = self.parameters['pt']- self.parameters['pr']  # dB
+        Lmax = self.__calculate_Lmax()
         print("L:", L, ", Lmax: ", Lmax)
         argument = (Lmax - L) / (math.sqrt(2) * sigma)
         prob = 0.5 * (1 + math.erf(argument))  # undefined situation when sigma=0
@@ -63,3 +63,22 @@ class Simulator:
             losses.append([couple[0], couple[1], L, couple[2]])
         return probs, losses
 
+
+    def __calculate_Lmax(self):
+        return self.parameters['pt'] - self.parameters['pr']  # dB
+    def generate_samples(self, sigma, f):
+
+        probs = []
+        lmax = self.__calculate_Lmax()
+        for d in np.arange(1,10.1, 0.1):
+            d = self.truncate(d,1)
+            count = 0
+            for x in range(0,100):
+                c = np.random.normal(0,sigma)
+                loss = self.model.lossdB(f, d) + c
+                if loss < lmax:
+                    count+=1
+
+            probs.append((d,count / 100, f, sigma))
+
+        return probs

@@ -5,7 +5,7 @@ from pylab import cm
 import numpy as np
 
 class PlotterClass:
-
+    lw = 2  #linewidth
     def __init__(self, data, params):
         self.probs = data
         self.params = params
@@ -52,7 +52,7 @@ class PlotterClass:
         sv = 6  # define the starting value of sigma
         x = [x[0] for x in self.probs if x[1] == sv]
         y = [x[2] for x in self.probs if x[1] == sv]
-        l, = plt.plot(x, y)
+        l, = plt.plot(x, y,lw=self.lw)
 
         slider = self.generate_slider("Sigma: ", 0,12.01,sv,0.01, [0.25, 0.2, 0.65, 0.03])
 
@@ -82,7 +82,7 @@ class PlotterClass:
         colors = ["#4D1A1A", "#B03C3C", "#D94A4A", "#C68B8A", "#FFC2B5"]
         plots_data = self.gen_data_sigma(sigmas)
         for i in range(len(sigmas)):
-            ax.plot(plots_data[i][0], plots_data[i][1], label="s = "+str(sigmas[i]), color=colors[i])
+            ax.plot(plots_data[i][0], plots_data[i][1], label="s = "+str(sigmas[i]), color=colors[i], lw=self.lw)
         ax.legend()
         plt.xlabel("Distance (km) ")
         plt.ylabel("Probability")
@@ -99,7 +99,7 @@ class PlotterClass:
         sd = 5  # define the starting value of distance
         x = [x[1] for x in self.probs if x[0] == sd]
         y = [x[2] for x in self.probs if x[0] == sd]
-        l, = plt.plot(x, y)
+        l, = plt.plot(x, y, lw=self.lw)
 
         slider = self.generate_slider('Distance (km)', 0, 10.1, sd, 0.1,[0.25, 0.2, 0.65, 0.03])
 
@@ -127,7 +127,7 @@ class PlotterClass:
         colors = ["#4D1A1A", "#B03C3C", "#D94A4A", "#C68B8A", "#FFC2B5"]
         plots_data = self.gen_data_distance(distances)
         for i in range(len(distances)):
-            ax.plot(plots_data[i][0], plots_data[i][1], label="d = " + str(distances[i]), color=colors[i])
+            ax.plot(plots_data[i][0], plots_data[i][1], label="d = " + str(distances[i]), color=colors[i], lw=self.lw)
         ax.legend()
         plt.xlabel("Sigmas  ")
         plt.ylabel("Probability")
@@ -141,9 +141,9 @@ class PlotterClass:
         plt.subplots_adjust(bottom=0.35)
         plt.xlim((0,12))
         sd = 5  # define the starting value of distance
-        x = [x[1] for x in self.probs if x[0] == sd]
-        y = [x[2] for x in self.probs if x[0] == sd]
-        l, = plt.plot(x, y)
+        x = [x[1] for x in self.probs if (x[0] == sd) and (x[3] == self.params['f'])]
+        y = [x[2] for x in self.probs if (x[0] == sd) and (x[3] == self.params['f'])]
+        l, = plt.plot(x, y, lw=self.lw)
 
         slider = self.generate_slider('Distance (km)', 0, 10.1, sd, 0.1,[0.25, 0.2, 0.65, 0.03])
         def update(val):
@@ -160,6 +160,7 @@ class PlotterClass:
 
         # display graph
         plt.show()
+
 
     def gen_data_freq_sigma(self, bound):
         plots = []
@@ -185,10 +186,10 @@ class PlotterClass:
 
         plots_data = self.gen_data_freq_sigma(sv)
 
-        ax.plot(plots_data[0][0], plots_data[0][1],label="f=1700",color="#22092C")
-        ax.plot(plots_data[1][0], plots_data[1][1],label="f=1800",color="#872341")
-        ax.plot(plots_data[2][0], plots_data[2][1],label="f=1900",color="#BE3144")
-        ax.plot(plots_data[3][0], plots_data[3][1],label="f=2000",color="#F05941")
+        ax.plot(plots_data[0][0], plots_data[0][1],label="f=1700",color="#22092C", lw=self.lw)
+        ax.plot(plots_data[1][0], plots_data[1][1],label="f=1800",color="#872341", lw=self.lw)
+        ax.plot(plots_data[2][0], plots_data[2][1],label="f=1900",color="#BE3144", lw=self.lw)
+        ax.plot(plots_data[3][0], plots_data[3][1],label="f=2000",color="#F05941", lw=self.lw)
 
         ax.legend()
 
@@ -213,7 +214,7 @@ class PlotterClass:
             colmap.set_array(zs)
 
             ax.plot_trisurf(xs, ys, zs, cmap=cm.jet, linewidth=0.1)
-        plt.colorbar(colmap)
+        plt.colorbar(colmap, ax=ax)
 
         ax.set_xlabel('Distance (km)')
         ax.set_ylabel('Sigma')
@@ -237,7 +238,7 @@ class PlotterClass:
             colmap.set_array(zs)
 
             ax.plot_trisurf(xs, ys, zs, cmap=cm.jet)
-        plt.colorbar(colmap)
+        plt.colorbar(colmap, ax=ax)
 
         ax.set_xlabel('Distance (km)')
         ax.set_ylabel('Sigma')
@@ -247,20 +248,12 @@ class PlotterClass:
 
 
     def gen_data_freq_barplot(self, bound_dv, bound_sv):
-        plots = []
-        for freq in [1700, 1800, 1900, 2000]:
-            prob = [x[2] for x in self.probs if (x[0] == bound_dv and x[1] == bound_sv and x[3] == freq)]  # distance
-            plots.append(prob)
-
-        plots = [x[0] for x in plots]
-        return plots
+        probs = [x[2] for x in self.probs if (x[0] == bound_dv) and (x[1] == bound_sv) and (x[3] == self.params['f'])]
+        return probs
 
     def set_data_plots_barplot(self, plots_data):
-        categories = ['Probability for 1700MHz', 'Probability for 1800MHz', 'Probability for 1900MHz',
-                      'Probability for 2000MHz']
-
+        categories = ['Probability for 1700MHz']
         bar_width = 0.2
-        r = np.arange(len(categories))
 
         data = plots_data
 
@@ -302,3 +295,44 @@ class PlotterClass:
         sigma_slider.on_changed(update)
         distance_slider.on_changed(update)
         plt.show()
+
+    def gen_data_comparison(self, f, sigma):
+        probs = [(x[0],x[2]) for x in self.probs if (x[1] == sigma) and (x[3] == f)]
+        return probs
+
+    def plot_compare(self, simulation_data):
+        # simulation_data[0] distance
+        # simulation_data[1] prob
+        # simulation_data[2] freq
+        # simulation_data[3] sigma
+
+
+
+        f = simulation_data[0][2]
+        sigma = simulation_data[0][3]
+        # Create a subplot
+        fig, ax = plt.subplots()
+        plt.subplots_adjust(bottom=0.35)
+        plt.xlim((0, 12))
+        #plt.ylim((0,1))
+        colors = ["#4D1A1A", "#B03C3C", "#D94A4A", "#C68B8A", "#FFC2B5"]
+        plots_data = self.gen_data_comparison(f,sigma)
+
+        print(simulation_data)
+        x1 = [x[0] for x in plots_data]
+        y1 = [y[1] for y in plots_data]
+
+        x2 = [x[0] for x in simulation_data]
+        y2 = [y[1] for y in simulation_data]
+
+
+        ax.plot(x1,y1, label="theoretical", color=colors[0], lw=self.lw)
+        ax.plot(x2,y2, label="simulated", color=colors[2], lw=self.lw)
+
+        ax.legend()
+        plt.xlabel("Distance km")
+        plt.ylabel("Probability")
+        plt.title("Probability(distance)")
+        # display graph
+        plt.show()
+
