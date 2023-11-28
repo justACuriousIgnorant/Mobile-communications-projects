@@ -66,19 +66,19 @@ class Simulator:
 
     def __calculate_Lmax(self):
         return self.parameters['pt'] - self.parameters['pr']  # dB
-    def generate_samples(self, sigma, f):
+    def generate_samples(self, sigma, f, n):
 
         probs = []
         lmax = self.__calculate_Lmax()
         for d in np.arange(1,10.1, 0.1):
             d = self.truncate(d,1)
             count = 0
-            for x in range(0,100):
+            for x in range(0,n):
                 c = np.random.normal(0,sigma)
                 loss = self.model.lossdB(f, d) + c
                 if loss < lmax:
                     count+=1
 
-            probs.append((d,count / 100, f, sigma))
+            probs.append((d,count / n, f, sigma))
 
         return probs

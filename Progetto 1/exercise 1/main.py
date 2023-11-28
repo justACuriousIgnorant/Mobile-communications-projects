@@ -41,5 +41,11 @@ if __name__ == '__main__':
 
 
     ##Simulation approach
-    results = simulator.generate_samples(5, 1700)
-    plotter_prob.plot_compare(results)
+    results = simulator.generate_samples(5, 1700, 100)
+    plotter_prob.plot_compare(results, 100)
+
+    results = simulator.generate_samples(5, 1700, 1000)
+    plotter_prob.plot_compare(results, 1000)
+
+    results = simulator.generate_samples(5, 1700, 10000)
+    plotter_prob.plot_compare(results, 10000)

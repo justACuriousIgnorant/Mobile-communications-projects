@@ -300,7 +300,7 @@ class PlotterClass:
         probs = [(x[0],x[2]) for x in self.probs if (x[1] == sigma) and (x[3] == f)]
         return probs
 
-    def plot_compare(self, simulation_data):
+    def plot_compare(self, simulation_data, n):
         # simulation_data[0] distance
         # simulation_data[1] prob
         # simulation_data[2] freq
@@ -327,7 +327,7 @@ class PlotterClass:
 
 
         ax.plot(x1,y1, label="theoretical", color=colors[0], lw=self.lw)
-        ax.plot(x2,y2, label="simulated", color=colors[2], lw=self.lw)
+        ax.plot(x2,y2, label=f"simulated (n={n})", color=colors[2], lw=self.lw)
 
         ax.legend()
         plt.xlabel("Distance km")
