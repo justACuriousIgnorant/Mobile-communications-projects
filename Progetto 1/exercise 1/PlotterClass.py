@@ -307,13 +307,13 @@ class PlotterClass:
         # simulation_data[3] sigma
 
         # Create a subplot
-        fig, ax = plt.subplots(len(n_list))
-        plt.subplots_adjust(bottom=0.35)
+        fig, ax = plt.subplots(len(n_list),figsize=(10, 10))
+
         plt.xlim((0, 12))
         #plt.ylim((0,1))
         colors = ["#4D1A1A", "#B03C3C", "#D94A4A", "#C68B8A", "#FFC2B5"]
 
-        for i in range(0,len(n_list)):    
+        for i in range(0,len(n_list)):
 
             f = simulation_data[i][0][2]
             sigma = simulation_data[i][0][3]
@@ -331,9 +331,13 @@ class PlotterClass:
             ax[i].plot(x2,y2, label=f"simulated (n={n_list[i]})", color=colors[2], lw=self.lw)
 
             ax[i].legend()
-        plt.xlabel("Distance km")
-        plt.ylabel("Probability")
-        plt.title("Probability(distance)")
+
+            ax[i].set_xlabel("Distance km")
+            ax[i].set_ylabel("Probability")
+        fig.set_figheight(10)
+        fig.suptitle("Probability(distance)")
+        plt.subplots_adjust(bottom=0.1, wspace=0.5, hspace=0.7,)
+
         # display graph
         plt.show()
 
