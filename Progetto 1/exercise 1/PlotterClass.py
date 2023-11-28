@@ -79,7 +79,7 @@ class PlotterClass:
         plt.xlim((1, 10))
         sv = 0.1  # define the starting value of sigma
         sigmas = [1, 3, 5, 8, 12]
-        colors = ["#2f2424", "#8ab09e", "#ffbdbd", "#d94949", "#57885a"]
+        colors = ["#4D1A1A", "#B03C3C", "#D94A4A", "#C68B8A", "#FFC2B5"]
         plots_data = self.gen_data_sigma(sigmas)
         for i in range(len(sigmas)):
             ax.plot(plots_data[i][0], plots_data[i][1], label="s = "+str(sigmas[i]), color=colors[i])
@@ -124,7 +124,7 @@ class PlotterClass:
         plt.subplots_adjust(bottom=0.35)
         plt.xlim((0, 12))
         distances = [1, 3, 5, 7, 10]
-        colors = ["#2f2424", "#8ab09e", "#ffbdbd", "#d94949", "#57885a"]
+        colors = ["#4D1A1A", "#B03C3C", "#D94A4A", "#C68B8A", "#FFC2B5"]
         plots_data = self.gen_data_distance(distances)
         for i in range(len(distances)):
             ax.plot(plots_data[i][0], plots_data[i][1], label="d = " + str(distances[i]), color=colors[i])
@@ -208,12 +208,11 @@ class PlotterClass:
             xs = [x[0] for x in self.probs]
             ys = [x[1] for x in self.probs]
             zs = [x[2] for x in self.probs]
-            ax.scatter(xs, ys, zs, marker=m)
 
-            colmap = cm.ScalarMappable(cmap=cm.hsv)
+            colmap = cm.ScalarMappable(cmap=cm.jet)
             colmap.set_array(zs)
 
-            ax.scatter(xs, ys, zs, c=cm.hsv(np.array(zs)/max(zs)), marker=m)
+            ax.plot_trisurf(xs, ys, zs, cmap=cm.jet, linewidth=0.1)
         plt.colorbar(colmap)
 
         ax.set_xlabel('Distance (km)')
@@ -234,10 +233,10 @@ class PlotterClass:
             ys = [x[1] for x in self.probs]
             zs = [x[2] for x in self.probs]
 
-            colmap = cm.ScalarMappable(cmap=cm.hsv)
+            colmap = cm.ScalarMappable(cmap=cm.jet)
             colmap.set_array(zs)
 
-            ax.scatter(xs, ys, zs, c=cm.hsv(np.array(zs)/max(zs)), marker=m)
+            ax.plot_trisurf(xs, ys, zs, cmap=cm.jet)
         plt.colorbar(colmap)
 
         ax.set_xlabel('Distance (km)')
