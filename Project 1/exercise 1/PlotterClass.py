@@ -82,7 +82,7 @@ class PlotterClass:
         colors = ["#4D1A1A", "#B03C3C", "#D94A4A", "#C68B8A", "#FFC2B5"]
         plots_data = self.gen_data_sigma(sigmas)
         for i in range(len(sigmas)):
-            ax.plot(plots_data[i][0], plots_data[i][1], label="s = "+str(sigmas[i]), color=colors[i], lw=self.lw)
+            ax.plot(plots_data[i][0], plots_data[i][1], label="σ = "+str(sigmas[i]), color=colors[i], lw=self.lw)
         ax.legend()
         plt.xlabel("Distance (km) ")
         plt.ylabel("Probability")

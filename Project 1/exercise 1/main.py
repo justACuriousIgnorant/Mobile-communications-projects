@@ -36,7 +36,7 @@ if __name__ == '__main__':
     #plotter_prob.plot3D_prob()
     #plotter_loss.plot3D_loss()
     #plotter_prob.bar_plot_prob()
-    #plotter_prob.plot_sigmas()
+    plotter_prob.plot_sigmas()
     #plotter_prob.plot_distances()
 
 
@@ -46,11 +46,4 @@ if __name__ == '__main__':
     f = 1700
     results.append(simulator.generate_samples(sigma, f, 50))
     results.append(simulator.generate_samples(sigma, f, 5000))
-    #results.append(simulator.generate_samples(sigma, f, 10000))
     plotter_prob.plot_compare(results, [50,5000])
-
-    #results = simulator.generate_samples(5, 1700, 1000)
-    #plotter_prob.plot_compare(results, 1000)
-
-    #results = simulator.generate_samples(5, 1700, 10000)
-    #plotter_prob.plot_compare(results, 10000)
