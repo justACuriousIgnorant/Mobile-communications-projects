@@ -1,0 +1,5 @@
+- Nel pratico dobbiamo implementare la comunicazione (encoding da dati a codeword, invio tramite un canale con errori, decoding e check)
+	- Il canale è un semplice canale simmetrico dove i bit sono inviati in modo indipendente, e anche gli errori sono indipendenti. Ogni bit ha probabilità $p$ di essere flippato; quindi al ricevitore ogni bit ha probabilità $p$ di essere sbagliato e $1-p$ di essere corretto (AWGN?)
+	- Se abbiamo tempo potremmo provare anche uno o due tipi di canale in più, forse basta cercare su internet modelli di canale
+- Dobbiamo studiare il bit-error-ratio (BER), ovvero il rapport bit errati/bit totali (dopo la correzione grazie ai codici); per il canale descritto il BER dovrebbe approssimare la probabilità di errore $P\{\hat{u}_i \neq u_i\}$, e dobbiamo studiarlo come funzione di $p$; consideriamo un intervallo per il BER da $10^{-1}$ a $10^{-5}$
+- Consideriamo messaggi casuali da 30 bit
