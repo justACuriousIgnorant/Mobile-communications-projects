@@ -4,7 +4,14 @@ import numpy as np
 import Channel
 import Encoder
 import PlotterClass
-def messages_generator(nsamples, len):
+
+"""
+messages_generator() creates a number of samples with a specific length
+@:param nsamples define the number of samples to be generated
+@:param len define the length of the messages generated 
+@:return the list of final samples
+"""
+def messages_generator(nsamples, len) -> list:
     messages = []
     for x in range(nsamples):
         m = ""
@@ -14,6 +21,9 @@ def messages_generator(nsamples, len):
         messages.append(m)
     return messages
 
+"""
+calc_BERs() calculate the value of BER for each generator specified
+"""
 def calc_BERs(n_samples, msg_len, genA, genB, step,stop ):
 
 
@@ -30,7 +40,7 @@ def calc_BERs(n_samples, msg_len, genA, genB, step,stop ):
     for id, p in enumerate(probs):
         BER_A_temp = 0
         BER_B_temp = 0
-        print("COMPLETED...: ",(id/len(np.arange(0,stop+step,step))), "%")
+        print("COMPLETED...: ",(id/len(np.arange(0,stop+step,step)))*100, "%")
         for id, m in enumerate(messages):
             channel.set_crossprob(p)
 
@@ -53,7 +63,7 @@ if __name__ == '__main__':
     n_samples = 10000
     msg_len = 30
     step = 0.005
-    stop = 0.15
+    stop = 0.20
     generator_A = ([1, 0, 0], [1, 0, 1])
     generator_B = ([1, 1, 1], [1, 0, 1])
 
