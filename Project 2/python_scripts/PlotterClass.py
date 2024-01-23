@@ -52,7 +52,7 @@ class PlotterClass:
         plt.xticks(np.arange(0,0.21, 0.01))
 
         plt.yscale('log')
-        ax.legend(loc='lower right')
+        ax.legend(loc='right center')
         plt.xlabel("Probability")
         plt.ylabel("Bit Error Rate")
         plt.title("BER(p)")
