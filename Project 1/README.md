@@ -20,9 +20,8 @@ The probability of having a link is thus
 $$P[link] = P[L+X < L_{max}] = P[X < L_{max}-L]$$
 $$P[X < L_{max}-L] = \frac{1}{2}\left[1+\text{erf}\left(\frac{L_{max}-L}{\sqrt2\cdot\sigma}\right)\right]$$
 We plot the behaviour of this function over the distance and different values of $\sigma$:
-![prob_distance_and_sigma](./figures/prob_distance_and_sigma.png)
-
+![prob_distance_and_sigma.png](figures%2Fprob_distance_and_sigma.png)
 ### Simulation
 
 For the simulation, we generate $n$ samples $x_i$ from $N(0,\sigma^2)$, with $\sigma=$ 5. These represent the shadowing factors of each receiver $r_i$, at a set distance $d$. For each $r_i$, the loss is computed using the COST model, and for each distance $d$ we compute the percentage of receivers such that $L_{r_i}+x_{i} < L_{max}$. This represents the probability of establishing a link, and the results are compared to the analytical model:
-![sim_compare](./figures/sim_compare.png)
+![sim_compare.png](figures%2Fsim_compare.png)
