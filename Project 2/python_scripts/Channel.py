@@ -1,12 +1,14 @@
-from random import random
-
-
+import random
+import viterbi as viterbi
+import Encoder
 class Channel():
-    message = ""
+
     def __init__(self, p=0.5):
-        p=1
+        self.p=p
+        self.message = []
     #set the crossover probability of the channel
-    def set_crossprob(self, p=0.5):
+    def set_crossprob(self, p):
+        self.p = p
     def __flip__(self, bit, p=0.5):
         scelte = [0, 1]
         peso = [1 - p, p]
@@ -20,7 +22,16 @@ class Channel():
 
 
     #send a message with crossover_probability p
-    def send_message(self, message):
-        #apply random replace (__flip__)
-    def receive_message(self):
-        #apply viterbi
+    def send_message(self, message, encoder):
+        msg = encoder.compute_output_bits(message)
+        self.message = []
+        for m in msg:
+            self.message.append(int(self.__flip__(int(m), self.p)))
+        return msg, self.message
+
+    def receive_message(self, constr, pol):
+        vit = viterbi.Viterbi(constr, pol)
+
+        msg = vit.decode(self.message)
+        self.message = []
+        return msg
