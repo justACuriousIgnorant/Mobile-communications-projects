@@ -37,7 +37,7 @@ if __name__ == '__main__':
     #plotter_loss.plot3D_loss()
     #plotter_prob.bar_plot_prob()
     plotter_prob.plot_sigmas()
-    #plotter_prob.plot_distances()
+    plotter_prob.plot_distances()
 
 
     ##Simulation approach

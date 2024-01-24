@@ -9,26 +9,29 @@ class Channel():
     #set the crossover probability of the channel
     def set_crossprob(self, p):
         self.p = p
+
+    # Flip a bit with probability p
     def __flip__(self, bit, p=0.5):
-        scelte = [0, 1]
-        peso = [1 - p, p]
-
-        n = random.choices(scelte, peso)[0]
-
+        choices = [0, 1]
+        weights = [1 - p, p]
+        n = random.choices(choices, weights)[0]
         if(n==0):
-            return 1 if bit==1 else 0
+            return bit
         else:
-            return 0 if bit==1 else 1
+            return 1-bit
 
 
-    #send a message with crossover_probability p
+    # Send a message with crossover_probability p
     def send_message(self, message, encoder):
+        # Compute the encoded message
         msg = encoder.compute_output_bits(message)
+        # Flip each bit with probability p
         self.message = []
         for m in msg:
             self.message.append(int(self.__flip__(int(m), self.p)))
         return msg, self.message
 
+    # Decode the received message using the 'viterbi' library
     def receive_message(self, constr, pol):
         vit = viterbi.Viterbi(constr, pol)
 

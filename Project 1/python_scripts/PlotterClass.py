@@ -129,9 +129,9 @@ class PlotterClass:
         for i in range(len(distances)):
             ax.plot(plots_data[i][0], plots_data[i][1], label="d = " + str(distances[i]), color=colors[i], lw=self.lw)
         ax.legend()
-        plt.xlabel("Sigmas  ")
+        plt.xlabel("σ")
         plt.ylabel("Probability")
-        plt.title("Probability(sigma)")
+        plt.title("Probability(σ)")
         # display graph
         plt.show()
 

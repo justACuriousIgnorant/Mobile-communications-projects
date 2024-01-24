@@ -17,8 +17,9 @@ class Encoder:
 
     def compute_output_bits(self, msg):
 
+        # Convert the message string to a bit array
         msg_bits = [ord(bit) for bit in msg]
-        #
+        # Convolve the message with the generators, modulo 2
         out_bits1 = map(lambda x: x % 2, np.convolve(msg_bits, self.generator1))
         out_bits2 = map(lambda x: x % 2, np.convolve(msg_bits, self.generator2))
 

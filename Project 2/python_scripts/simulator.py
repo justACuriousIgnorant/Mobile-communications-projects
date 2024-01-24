@@ -27,7 +27,6 @@ calc_BERs() calculate the value of BER for each generator specified
 def calc_BERs(n_samples, msg_len, genA, genB, step,stop ):
 
 
-    messages = messages_generator(n_samples, msg_len)
     probs = np.arange(0, stop + step, step)
 
     channel = Channel.Channel()
@@ -41,6 +40,7 @@ def calc_BERs(n_samples, msg_len, genA, genB, step,stop ):
         BER_A_temp = 0
         BER_B_temp = 0
         print("COMPLETED...: ",(id/len(np.arange(0,stop+step,step)))*100, "%")
+        messages = messages_generator(n_samples, msg_len)
         for id, m in enumerate(messages):
             channel.set_crossprob(p)
 
